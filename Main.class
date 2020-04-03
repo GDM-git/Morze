@@ -1,0 +1,47 @@
+package MorzePack;
+
+        import java.io.*;
+        import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        //Проверка на наличие файла "File_in.txt"
+        File File_in = new File("File_in.txt");
+        if (File_in.exists() == false) {
+            System.out.println("File \"File_in.txt\" not found");
+            return;
+        }
+        //Создаём HashSet
+        HashSet Char_list = new HashSet();
+        //Выбираем режим работы программы
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Choose decode: 1 for translate (English -> Morze) or 2 for translate (Morze -> English)");
+        int choose = scan.nextInt();
+        while ((choose != 1) && (choose != 2)) {
+            System.out.println("Error. Retry choose decode");
+            choose = scan.nextInt();
+        }
+        //Активируем выбранный режим и выполняем необходимые действия
+        Coder Worker = null;
+        switch (choose) {
+            case (1) :
+                Worker = new Coder_English_to_Morze();
+                Worker.coding("File_in.txt","File_out.txt", Char_list);
+                break;
+            case (2) :
+                Worker = new Coder_Morze_to_English();
+                Worker.coding("File_in.txt","File_out.txt", Char_list);
+                break;
+            default:
+                System.out.println("Unknown error");
+                break;
+        }
+        //Выводим информацию об символах
+        Iterator<Counter> i = Char_list.iterator();
+        while (i.hasNext()) {
+            Counter j = i.next();
+            //if (j.get_s() == ' ') //Если нужен конкретный символ
+            System.out.println("\"" + j.get_s() + "\" - " + j.get());
+        }
+    }
+}

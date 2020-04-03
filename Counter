@@ -1,0 +1,26 @@
+package MorzePack;
+
+
+
+public class Counter {
+    private int counter = 0;
+    private char symbol;
+    public Counter(Character symbol_in){
+        symbol = symbol_in;
+    }
+    public int hashCode() {
+        counter = counter + 1;
+        return symbol;
+    }
+    public boolean equals(Object counter_equate) {
+        if (symbol == ((Counter)counter_equate).symbol)
+            ((Counter) counter_equate).counter = ((Counter) counter_equate).counter + 1;
+        return (symbol == ((Counter)counter_equate).symbol);
+    }
+    public int get() {
+        return counter;
+    }
+    public char get_s() {
+        return symbol;
+    }
+}

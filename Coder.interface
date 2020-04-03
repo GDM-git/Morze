@@ -1,0 +1,8 @@
+package MorzePack;
+
+import java.io.IOException;
+import java.util.HashSet;
+
+public interface Coder {
+    public void coding(String File_in_name, String File_out_name, HashSet<Counter> Char_list) throws IOException;
+}
